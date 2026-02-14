@@ -1,1 +1,114 @@
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; font-family:sans-serif; }
 
+/* BODY */
+body {
+  background: #0a0a0a;
+  color: #fff;
+  min-height: 100vh;
+}
+
+/* HEADER */
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 1rem;
+  background: #111;
+}
+
+header h1 { font-size:2rem; }
+
+.buttons button {
+  margin-left:0.5rem;
+  padding:0.5rem 1rem;
+  border:none;
+  border-radius:12px;
+  background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00);
+  color:#111;
+  font-weight:bold;
+  cursor:pointer;
+  transition: transform 0.2s;
+}
+
+.buttons button:hover { transform: scale(1.1); }
+
+/* LIQUID METAL EFFECT (simple text shadow) */
+.liquid-metal {
+  color: #fff;
+  background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 2s infinite linear;
+}
+
+@keyframes shine {
+  0% { background-position:0%; }
+  100% { background-position:200%; }
+}
+
+/* GALLERY GRID */
+.gallery {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap:1rem;
+  padding:1rem;
+}
+
+/* SLOT */
+.slot {
+  position:relative;
+  width:100%;
+  padding-bottom:100%;
+  background: rgba(255,255,255,0.05);
+  border: 2px dashed rgba(255,255,255,0.2);
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  transition: transform 0.2s;
+}
+
+.slot:hover { transform: scale(1.05) rotateZ(1deg); }
+
+/* IMAGE IN SLOT */
+.slot img {
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* MODAL */
+.modal {
+  display:none;
+  position:fixed;
+  top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+
+.modal img {
+  max-width:90%;
+  max-height:80%;
+  border-radius:16px;
+}
+
+#closeModal {
+  position:absolute;
+  top:2rem; right:2rem;
+  font-size:3rem;
+  cursor:pointer;
+  color:#fff;
+}
+
+#downloadBtn {
+  margin-top:1rem;
+  padding:0.5rem 1rem;
+  border-radius:12px;
+  background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00);
+  color:#111;
+  text-decoration:none;
+  font-weight:bold;
+}
