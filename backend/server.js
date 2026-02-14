@@ -8,34 +8,32 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Folder upload
 const uploadFolder = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadFolder)) fs.mkdirSync(uploadFolder);
 
-// Multer storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, uploadFolder),
   filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname)
 });
 const upload = multer({ storage });
 
-// Serve static files upload
+// Serve uploaded files
 app.use("/uploads", express.static(uploadFolder));
 
-// Endpoint upload
+// UPLOAD
 app.post("/upload", upload.array("files"), (req, res) => {
   const urls = req.files.map(f => `${req.protocol}://${req.get("host")}/uploads/${f.filename}`);
   res.json({ uploaded: urls });
 });
 
-// Endpoint list files
+// LIST FILES
 app.get("/files", (req, res) => {
   const files = fs.readdirSync(uploadFolder);
   const urls = files.map(f => `${req.protocol}://${req.get("host")}/uploads/${f}`);
   res.json(urls);
 });
 
-// Endpoint delete
+// DELETE ONE
 app.delete("/delete/:filename", (req, res) => {
   const filePath = path.join(uploadFolder, req.params.filename);
   if (fs.existsSync(filePath)) {
@@ -44,7 +42,7 @@ app.delete("/delete/:filename", (req, res) => {
   } else res.status(404).json({ error: "File not found" });
 });
 
-// Endpoint clean all
+// CLEAN ALL
 app.delete("/clean", (req, res) => {
   fs.readdirSync(uploadFolder).forEach(f => fs.unlinkSync(path.join(uploadFolder, f)));
   res.json({ cleaned: true });
