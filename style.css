@@ -33,7 +33,7 @@ header h1 { font-size:2rem; }
 
 .buttons button:hover { transform: scale(1.1); }
 
-/* LIQUID METAL EFFECT (simple text shadow) */
+/* LIQUID METAL EFFECT */
 .liquid-metal {
   color: #fff;
   background: linear-gradient(90deg, #ff00ff, #00ffff, #ffff00);
@@ -50,7 +50,7 @@ header h1 { font-size:2rem; }
 /* GALLERY GRID */
 .gallery {
   display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* mai mari pe desktop */
   gap:1rem;
   padding:1rem;
 }
