@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 class="liquid-metal">Neon Gallery</h1>
+    <div class="buttons">
+      <input type="file" id="fileInput" multiple style="display:none">
+      <button id="addBtn" class="liquid-metal">Add</button>
+      <button id="cleanBtn" class="liquid-metal">Clean</button>
+    </div>
+  </header>
 
+  <main id="gallery" class="gallery">
+    <!-- Sloturi vor fi populate de JS -->
+  </main>
+
+  <!-- Preview modal -->
+  <div id="previewModal" class="modal">
+    <span id="closeModal">&times;</span>
+    <img id="modalImg" src="">
+    <a id="downloadBtn" download>Download</a>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
